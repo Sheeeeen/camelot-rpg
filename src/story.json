@@ -1,0 +1,11 @@
+[
+  {
+    "isCheckpoint": true,
+    "dialogue": ["hello", "my name is dan", "do you want to walk"],
+    "characterId": "Sean",
+    "location": "home",
+    "choices": ["yes", "no"]
+  },
+  {},
+  {}
+]
