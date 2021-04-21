@@ -1,0 +1,18 @@
+{
+  "Camelot": {
+    "Name": "Camelot",
+    "battle_art": "different.png",
+    "Hit_Points": "100",
+    "Moves": [
+      {
+        "Nmaemover": "Generic_hit",
+        "Damage": "90000000000"
+      }
+    ]
+  },
+  "Player": {
+    "Name": "Player",
+    "battle_art": "different.png",
+    "Hit_Points": "100"
+  }
+}

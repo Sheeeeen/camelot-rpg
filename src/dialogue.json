@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Bedwar",
+    "section_of_dialogue": "bwckw;e",
+    "character_art": "art.png",
+    "choices": [1, 2, 3],
+    "death": 0
+  },
+  {
+    "name": "Camelot",
+    "section_of_dialogue": "what",
+    "character_art": "disaster.png",
+    "choices": [1, 2, 3],
+    "death": [1, 2]
+  }
+]
