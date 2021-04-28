@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Bedwar",
+    "text": "bwckw;e",
+    "character_art": "art.png",
+    "choices": [1, 2, 3],
+    "death": 0
+  },
+  {
+    "name": "Camelot",
+    "text": "what",
+    "character_art": "disaster.png",
+    "choices": [1, 2, 3],
+    "death": [1, 2]
+  }
+]
