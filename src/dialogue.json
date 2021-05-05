@@ -2,9 +2,9 @@
   {
     "name": "Bedwar",
     "text": "bwckw;e",
-    "character_art": "art.png",
-    "choices": [1, 2, 3],
-    "death": 0
+    "character_art": "https://i.dlpng.com/static/png/5389723-minecraft-bed-png-99-images-in-collection-page-1-minecraft-bed-png-226_188_preview.png",
+    "choices": ["Camelot", "Hello", "Sup"],
+    "death": [0]
   },
   {
     "name": "Camelot",

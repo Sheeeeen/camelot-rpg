@@ -2,3 +2,18 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.dialogue-screen {
+  border: 2px solid #000;
+  padding: 1rem;
+}
+
+.dialogue-options {
+  display: flex;
+  flex-direction: row;
+}
+
+.dialogue-options button {
+  flex: 1;
+  margin-right: 1rem;
+}
