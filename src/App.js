@@ -1,10 +1,16 @@
+import { Fragment } from "react";
 import "./styles.css";
 import { useState } from "react";
 import Dialogue from "./dialogue.json";
 
 export default function App() {
   const [progress, setProgress] = useState(0);
-  const [winStatus, setWinStatus] = useState("");
+  const [winStatus, setWinStatus] = useState("loss");
+
+  // handleReset
+  // setProgress
+  // setWinStatus
+
   let screen;
 
   if (winStatus === "") {
@@ -13,12 +19,26 @@ export default function App() {
         dialogueScene={Dialogue[progress]}
         progress={progress}
         setProgress={setProgress}
+        setWinStatus={setWinStatus}
       />
     );
   } else if (winStatus === "win") {
-    screen = <SummaryScreen resultHeader="Victory" />;
+    screen = (
+      <SummaryScreen
+        resultHeader="Victory"
+        winStatus={winStatus}
+        setWinStatus={setWinStatus}
+      />
+    );
   } else if (winStatus === "loss") {
-    screen = <SummaryScreen resultHeader="Game Over" />;
+    screen = (
+      <SummaryScreen
+        resultHeader="Game Over"
+        winStatus={winStatus}
+        setWinStatus={setWinStatus}
+        setProgress={setProgress}
+      />
+    );
   }
 
   // https://reactjs.org/docs/conditional-rendering.html
@@ -56,15 +76,15 @@ function DialogueScreen(props) {
     const selection = event.target.attributes.index.value;
 
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
-    if (props.dialogueScene.death.includes(parseInt(selection))) {
-      console.log("im dead");
+    if (props.dialogueScene.death.includes(parseInt(selection, 10))) {
+      props.setWinStatus("loss");
     } else {
       props.setProgress(props.progress + 1);
     }
   }
 
   return (
-    <div className="dialogue-screen">
+    <div className="screen dialogue-screen">
       <Portrait characterArt={props.dialogueScene.character_art} />
       <Name characterName={props.dialogueScene.name} />
       <Speech speechBubble={props.dialogueScene.text} />
@@ -78,8 +98,30 @@ function DialogueScreen(props) {
 }
 
 function SummaryScreen(props) {
+  function handleReset(reset) {
+    props.setWinStatus("");
+    if (reset) {
+      props.setProgress(0);
+    }
+  }
+  let option;
+  let statusClassName = props.winStatus;
+  if (props.winStatus === "win") {
+    // onClick={handleReset}
+    option = <Button buttonText="Play Again" />;
+  } else if (props.winStatus === "loss") {
+    option = (
+      <Fragment>
+        <Button buttonText="Start Over" />
+        <Button buttonText="Press on" buttonClick={handleReset} />
+      </Fragment>
+    );
+  }
+
   return (
-    <h1>{props.resultHeader}</h1>
-    //<Button />
+    <div className={`screen ${statusClassName}`}>
+      <h1>{props.resultHeader}</h1>
+      <div class="dialogue-options">{option}</div>
+    </div>
   );
 }
