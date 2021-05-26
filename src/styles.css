@@ -8,6 +8,7 @@
   height: 27rem;
   border: 2px solid #000;
   padding: 1rem;
+  margin: 2rem auto;
 }
 
 .screen.loss {
@@ -15,6 +16,24 @@
   color: red;
   font-family: "Tinos", serif;
   text-transform: uppercase;
+}
+
+.screen.win{
+  background:yellow;
+  color: blue;
+}
+
+.screen.win button{
+  border: 2px solid rgb(0, 0, 0);
+  font-weight: bold;
+  background: transparent;
+  color: black;
+  text-transform: uppercase;
+  padding: 0.8rem 1rem;
+}
+
+.portrait {
+  width:18.75rem;
 }
 
 .screen.loss button {

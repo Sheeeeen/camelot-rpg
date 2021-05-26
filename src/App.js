@@ -5,7 +5,7 @@ import Dialogue from "./dialogue.json";
 
 export default function App() {
   const [progress, setProgress] = useState(0);
-  const [winStatus, setWinStatus] = useState("loss");
+  const [winStatus, setWinStatus] = useState("");
 
   // handleReset
   // setProgress
@@ -28,6 +28,7 @@ export default function App() {
         resultHeader="Victory"
         winStatus={winStatus}
         setWinStatus={setWinStatus}
+        setProgress={setProgress}
       />
     );
   } else if (winStatus === "loss") {
@@ -62,7 +63,7 @@ function Speech(props) {
 
 // Avatar/Img
 function Portrait(props) {
-  return <img src={props.characterArt} />;
+  return <img className="portrait" src={props.characterArt} />;
 }
 // Name Plate
 function Name(props) {
@@ -78,6 +79,8 @@ function DialogueScreen(props) {
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
     if (props.dialogueScene.death.includes(parseInt(selection, 10))) {
       props.setWinStatus("loss");
+    } else if (props.dialogueScene.victory && props.dialogueScene.victory.includes(parseInt(selection, 10))) {
+      props.setWinStatus("win");
     } else {
       props.setProgress(props.progress + 1);
     }
@@ -108,12 +111,12 @@ function SummaryScreen(props) {
   let statusClassName = props.winStatus;
   if (props.winStatus === "win") {
     // onClick={handleReset}
-    option = <Button buttonText="Play Again" />;
+    option = <Button buttonText="Play Again" buttonClick={() => handleReset(true)}/>;
   } else if (props.winStatus === "loss") {
     option = (
       <Fragment>
-        <Button buttonText="Start Over" />
-        <Button buttonText="Press on" buttonClick={handleReset} />
+        <Button buttonText="Press on" buttonClick={() => handleReset(false)} />
+        <Button buttonText="Start Over" buttonClick={() => handleReset(true)} />
       </Fragment>
     );
   }
